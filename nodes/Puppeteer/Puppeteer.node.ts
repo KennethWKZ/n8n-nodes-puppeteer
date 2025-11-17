@@ -13,7 +13,7 @@ import { makeResolverFromLegacyOptions, NodeVM } from '@n8n/vm2';
 import puppeteer from 'puppeteer-extra';
 import pluginStealth from 'puppeteer-extra-plugin-stealth';
 //@ts-ignore
-import pluginHumanTyping from 'puppeteer-extra-plugin-human-typing'; 
+import pluginHumanTyping from 'puppeteer-extra-plugin-human-typing';
 import {
 	type Browser,
 	type Device,
@@ -285,7 +285,7 @@ async function processPageOperation(
 				}
 
 				if (fileName) {
-					screenshotOptions.path = fileName;
+					screenshotOptions.path = fileName as any;
 				}
 
 				const screenshot = await page.screenshot(screenshotOptions);
@@ -633,7 +633,7 @@ export class Puppeteer implements INodeType {
 						await browser.disconnect();
 					} else {
 						await browser.close();
-					}	
+					}
 				} catch (error) {
 					console.error('Error closing browser:', error);
 				}
